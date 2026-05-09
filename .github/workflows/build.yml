@@ -45,7 +45,6 @@ jobs:
             -L${TTF_PATH}/lib \
             -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lm \
             -static-libgcc -static-libstdc++ \
-            -mwindows
 
       - name: Package (copy DLLs)
         run: |
