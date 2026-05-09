@@ -1,0 +1,11 @@
+abyss
+abyss.exe
+build/
+dist/
+*.zip
+*.tar.gz
+SDL2-*/
+SDL2_ttf-*/
+lib/*.so
+lib/*.dll
+lib/discord_rpc.h
