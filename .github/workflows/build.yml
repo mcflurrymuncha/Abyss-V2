@@ -1,9 +1,9 @@
-name: Build Abyss.
+name: Build Abyss
 
 on:
   push:
     branches: [ main, master ]
-    tags:     [ 'v*' ]
+    tags:      [ 'v*' ]
   pull_request:
     branches: [ main, master ]
 
@@ -62,12 +62,12 @@ jobs:
 
           x86_64-w64-mingw32-g++ \
             -std=c++17 -O2 -Wall \
-            -I${SDL2_DIR}/include/SDL2 \
-            -I${TTF_DIR}/include/SDL2 \
+            -I${SDL2_DIR}/include \
+            -I${TTF_DIR}/include \
             src/main.cpp \
             -o abyss.exe \
             -L${SDL2_DIR}/lib -L${TTF_DIR}/lib \
-            -lSDL2 -lSDL2_ttf -lm \
+            -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -lm \
             -static-libgcc -static-libstdc++ \
             -mwindows
 
@@ -79,8 +79,8 @@ jobs:
           mkdir -p dist
           cp abyss.exe dist/
           # Bundle required DLLs so the exe runs without installation
-          cp ${SDL2_DIR}/bin/SDL2.dll        dist/
-          cp ${TTF_DIR}/bin/SDL2_ttf.dll     dist/
+          cp ${SDL2_DIR}/bin/SDL2.dll      dist/
+          cp ${TTF_DIR}/bin/SDL2_ttf.dll   dist/
           # SDL2_ttf depends on these:
           cp ${TTF_DIR}/bin/libfreetype-6.dll  dist/ 2>/dev/null || true
           cp ${TTF_DIR}/bin/zlib1.dll           dist/ 2>/dev/null || true
@@ -145,9 +145,9 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          name: "Abyss. ${{ github.ref_name }}"
+          name: "Abyss ${{ github.ref_name }}"
           body: |
-            ## Abyss. ${{ github.ref_name }}
+            ## Abyss ${{ github.ref_name }}
 
             *Stare into the void for 20 minutes. The void stares back.*
 
