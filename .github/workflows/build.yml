@@ -30,12 +30,14 @@ jobs:
 
       - name: Build
         run: |
-          # Use absolute paths to ensure the compiler finds the headers
+          # Use absolute paths
           export SDL2_PATH=$GITHUB_WORKSPACE/SDL2-2.30.3/x86_64-w64-mingw32
           export TTF_PATH=$GITHUB_WORKSPACE/SDL2_ttf-2.22.0/x86_64-w64-mingw32
           
           x86_64-w64-mingw32-g++ -std=c++17 -O2 -Wall \
+            -I${SDL2_PATH}/include/SDL2 \
             -I${SDL2_PATH}/include \
+            -I${TTF_PATH}/include/SDL2 \
             -I${TTF_PATH}/include \
             src/main.cpp \
             -o abyss.exe \
