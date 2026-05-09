@@ -12,7 +12,7 @@ A minimalist C++ game. You look at it. It looks at you. Don't blink.
 - **Linux / macOS / Windows** (with minor path tweaks)
 - **g++** (C++17)
 - **SDL2** + **SDL2_ttf**
-- *(Optional)* Discord Game SDK for Rich Presence
+-  **Discord Game SDK** (for Rich Presence) (Optional)
 
 ### Install SDL2
 
